@@ -16,16 +16,8 @@ public class Main {
      */
     public static void main(String[] args) {
         Game game = new Game();
-        System.out.println("Desynchronosis v.0.2.2.0");
-        System.out.println("Release notes\n--------------------------------------------");
-        System.out.println("v.0.0.1 - Please be gentle with me; I'm new.");
-        System.out.println("v.0.0.2 - Added to the map, including the bakery!");
-        System.out.println("v.0.0.3 - Implemented rudimentary items. Cake is in the bakery!");
-        System.out.println("v.0.1.4.0.alpha - Added new revisioning standard, making the change between this update and the previous update ambiguous. (Or is it?)");
-        System.out.println("v.0.2.0.0.alpha - 11/24/2011 - Time has been partially implemented. Hooray! I'll finish time, then work on cleaning up the cosmetic aspects of the game a bit");
-        System.out.println("v.0.2.1.0.alpha - 12/8/2011 - Items can now be interacted with, though none do anything yet.");
-        System.out.println("v.0.2.2.0.alpha - 1/30/2012 - New kind of exit which will only exist at a certain time. (Time dependency)");
-        System.out.println("--------------------------------------------\n");
+        System.out.println("Desynchronosis! Yaaaay!");
+        System.out.println("Now open source!");
 
         game.init();
         game.play();
