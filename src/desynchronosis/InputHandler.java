@@ -43,8 +43,10 @@ public class InputHandler {
             controller.setCurrentRoom(input);
             controller.display();
             return true;
+            
         } else if(controller.isValidItem(input)) {
             return true;
+            
         } else if(input.equalsIgnoreCase("Time")) {
             System.out.println("----Time---------------");
             System.out.println("[9am]|[noon]|[3pm]");
@@ -60,6 +62,7 @@ public class InputHandler {
             time.setTime(result[1]);
             controller.display();
             return true;
+            
         } else if(itemLookAtPattern_look.matcher(input).find()) {
             input = input.substring(5);
             if(controller.isValidItem(input)) {
@@ -67,6 +70,7 @@ public class InputHandler {
                 return true;
             }
             return false;
+            
         } else if(itemLookAtPattern_l.matcher(input).find()) {
             input = input.substring(2);
             if(controller.isValidItem(input)) {
@@ -74,6 +78,7 @@ public class InputHandler {
                 return true;
             }
             return false;
+            
         } else if(itemObtainPattern_get.matcher(input).find()) {
             input = input.substring(4);
             if(controller.isValidItem(input)) {
@@ -85,6 +90,7 @@ public class InputHandler {
             return true;
             }
             return false;
+            
         } else if(itemObtainPattern_take.matcher(input).find()) {
             input = input.substring(5);
             if(controller.isValidItem(input)) {
@@ -110,7 +116,7 @@ public class InputHandler {
             System.out.println("DEBUG: Inventory accessed.");
             return true;
         } else {
-            // Serialize unrecognized response to XML
+            // Serialize unrecognized response to XML/JSON before beta testing
             return false;
         }
         //exitResponder()
