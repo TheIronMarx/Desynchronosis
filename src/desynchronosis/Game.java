@@ -26,7 +26,7 @@ public class Game {
             e.printStackTrace();
         }
         System.out.print("Well? Ready to play, " + player.getName() + "? >");
-        input.nameConfirm(scan.nextLine());      //Does this really need a call to InputHandler?
+        input.nameConfirm(scan.nextLine());
         // Add response listener (answer == no) ? ("Really? What's wrong?) : etc)
 
     }

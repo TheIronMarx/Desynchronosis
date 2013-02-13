@@ -55,7 +55,8 @@ public class InputHandler {
             time.setTime(scan.nextLine());
             controller.display();
             return true;
-                                                                                                                                                                                         } else if(timePattern.matcher(input).find()) {
+            
+        } else if(timePattern.matcher(input).find()) {
             String[] result = input.split(" ", 0);
             if(result.length > 2)
                 return false;
@@ -102,19 +103,20 @@ public class InputHandler {
                 return true;
             }
             return false;
-
-
-
+            
         } else if(input.equalsIgnoreCase("Look") || input.equalsIgnoreCase("L")) {
             controller.display();
             return true;
+            
         } else if(input.equals("TERMINATE")) {
             System.exit(0);
-            return false;
+            return true;
+            
         } else if(input.equalsIgnoreCase("Inventory") || input.equalsIgnoreCase("Inv") || input.equalsIgnoreCase("In") || input.equalsIgnoreCase("I")) {
             controller.displayInventory();
             System.out.println("DEBUG: Inventory accessed.");
             return true;
+            
         } else {
             // Serialize unrecognized response to XML/JSON before beta testing
             return false;
