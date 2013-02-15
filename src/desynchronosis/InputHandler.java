@@ -24,10 +24,10 @@ public class InputHandler {
         controller = new DispatcherController();
         scan = new Scanner(System.in);
 
-        timePattern = Pattern.compile("Time [A-Z0-9]+", Pattern.CASE_INSENSITIVE);
-        itemLookAtPattern_look = Pattern.compile("L(o(o(k)?)?)? [A-Z0-9]+", Pattern.CASE_INSENSITIVE);
-        itemObtainPattern_take = Pattern.compile("T(a(k(e)?)?)? [A-Z0-9]+", Pattern.CASE_INSENSITIVE);
-        itemObtainPattern_get = Pattern.compile("G(e(t)?)? [A-Z0-9]+", Pattern.CASE_INSENSITIVE);
+        timePattern = Pattern.compile("Time [A-Z 0-9]+", Pattern.CASE_INSENSITIVE);
+        itemLookAtPattern_look = Pattern.compile("L(o(o(k)?)?)? [A-Z 0-9]+", Pattern.CASE_INSENSITIVE);
+        itemObtainPattern_take = Pattern.compile("T(a(k(e)?)?)? [A-Z 0-9]+", Pattern.CASE_INSENSITIVE);
+        itemObtainPattern_get = Pattern.compile("G(e(t)?)? [A-Z 0-9]+", Pattern.CASE_INSENSITIVE);
         inventoryPattern = Pattern.compile("I(n(v(e(n(t(o(r(y)?)?)?)?)?)?)?)?", Pattern.CASE_INSENSITIVE);
     }
 
@@ -57,13 +57,13 @@ public class InputHandler {
             controller.display();
             return true;
 
-        } else if(timePattern.matcher(input).find()) {
+        } else if(timePattern.matcher(input).matches()) {
             input = input.substring(input.indexOf(" ")+1);
             time.setTime(input);
             controller.display();
             return true;
             
-        } else if(itemLookAtPattern_look.matcher(input).find()) {
+        } else if(itemLookAtPattern_look.matcher(input).matches()) {
             input = input.substring(input.indexOf(" ")+1);
             if(controller.isValidItem(input)) {
                 controller.inspectItem(input);
@@ -71,7 +71,7 @@ public class InputHandler {
             }
             return false;
             
-        } else if(itemObtainPattern_get.matcher(input).find()) {
+        } else if(itemObtainPattern_get.matcher(input).matches()) {
         	input = input.substring(input.indexOf(" ")+1);
             if(controller.isValidItem(input)) {
                 if(controller.isItemObtainable(input)) {
@@ -83,7 +83,7 @@ public class InputHandler {
             }
             return false;
             
-        } else if(itemObtainPattern_take.matcher(input).find()) {
+        } else if(itemObtainPattern_take.matcher(input).matches()) {
         	input = input.substring(input.indexOf(" ")+1);
             if(controller.isValidItem(input)) {
                 if(controller.isItemObtainable(input)) {
@@ -103,7 +103,7 @@ public class InputHandler {
             System.exit(0);
             return true;
             
-        } else if(inventoryPattern.matcher(input).find()) {
+        } else if(inventoryPattern.matcher(input).matches()) {
             controller.displayInventory();
             System.out.println("DEBUG: Inventory accessed.");
             return true;
