@@ -17,6 +17,7 @@ public class InputHandler {
     Pattern itemLookAtPattern_l;
     Pattern itemObtainPattern_take;
     Pattern itemObtainPattern_get;
+    Pattern inventoryPattern;
 
     public InputHandler() {
         time = new Time();
@@ -24,10 +25,10 @@ public class InputHandler {
         scan = new Scanner(System.in);
 
         timePattern = Pattern.compile("Time [A-Z0-9]+", Pattern.CASE_INSENSITIVE);
-        itemLookAtPattern_look = Pattern.compile("Look [A-Z0-9]+", Pattern.CASE_INSENSITIVE);
-        itemLookAtPattern_l = Pattern.compile("L [A-Z0-9]+", Pattern.CASE_INSENSITIVE);
-        itemObtainPattern_take = Pattern.compile("Take [A-Z0-9]+", Pattern.CASE_INSENSITIVE);
-        itemObtainPattern_get = Pattern.compile("Get [A-Z0-9]+", Pattern.CASE_INSENSITIVE);
+        itemLookAtPattern_look = Pattern.compile("L(o(o(k)?)?)? [A-Z0-9]+", Pattern.CASE_INSENSITIVE);
+        itemObtainPattern_take = Pattern.compile("T(a(k(e)?)?)? [A-Z0-9]+", Pattern.CASE_INSENSITIVE);
+        itemObtainPattern_get = Pattern.compile("G(e(t)?)? [A-Z0-9]+", Pattern.CASE_INSENSITIVE);
+        inventoryPattern = Pattern.compile("I(n(v(e(n(t(o(r(y)?)?)?)?)?)?)?)?", Pattern.CASE_INSENSITIVE);
     }
 
     public void nameConfirm(String input) {
@@ -55,25 +56,15 @@ public class InputHandler {
             time.setTime(scan.nextLine());
             controller.display();
             return true;
-            
+
         } else if(timePattern.matcher(input).find()) {
-            String[] result = input.split(" ", 0);
-            if(result.length > 2)
-                return false;
-            time.setTime(result[1]);
+            input = input.substring(input.indexOf(" ")+1);
+            time.setTime(input);
             controller.display();
             return true;
             
         } else if(itemLookAtPattern_look.matcher(input).find()) {
-            input = input.substring(5);
-            if(controller.isValidItem(input)) {
-                controller.inspectItem(input);
-                return true;
-            }
-            return false;
-            
-        } else if(itemLookAtPattern_l.matcher(input).find()) {
-            input = input.substring(2);
+            input = input.substring(input.indexOf(" ")+1);
             if(controller.isValidItem(input)) {
                 controller.inspectItem(input);
                 return true;
@@ -81,7 +72,7 @@ public class InputHandler {
             return false;
             
         } else if(itemObtainPattern_get.matcher(input).find()) {
-            input = input.substring(4);
+        	input = input.substring(input.indexOf(" ")+1);
             if(controller.isValidItem(input)) {
                 if(controller.isItemObtainable(input)) {
                 controller.obtainItem(input);
@@ -93,7 +84,7 @@ public class InputHandler {
             return false;
             
         } else if(itemObtainPattern_take.matcher(input).find()) {
-            input = input.substring(5);
+        	input = input.substring(input.indexOf(" ")+1);
             if(controller.isValidItem(input)) {
                 if(controller.isItemObtainable(input)) {
                     controller.obtainItem(input);
@@ -112,7 +103,7 @@ public class InputHandler {
             System.exit(0);
             return true;
             
-        } else if(input.equalsIgnoreCase("Inventory") || input.equalsIgnoreCase("Inv") || input.equalsIgnoreCase("In") || input.equalsIgnoreCase("I")) {
+        } else if(inventoryPattern.matcher(input).find()) {
             controller.displayInventory();
             System.out.println("DEBUG: Inventory accessed.");
             return true;
