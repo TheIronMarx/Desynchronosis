@@ -18,7 +18,7 @@ public class ItemDispatcher {
         //(RefID, where it is, name, desc, is movable)
         items.add(new Item(0, 5, "Cake", "This is cake's description. Clearly, this must be a string changed based on time.", true));
         items.add(new Item(1, 0, "Grandfather clock", "This is grandfather clock's description. This string must change based on time", false));
-
+        items.add(new Item(1, 2, "A SPACESHIP HAHA", "SPICESHAP FOIR MARSCUS!!", false));
 
     }
 
