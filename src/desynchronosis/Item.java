@@ -6,8 +6,9 @@ package desynchronosis;
 public class Item {
     int referenceNumber;
     int roomLocation;
-    String name;
     String moment;
+    
+    String name;
 
     String desc9am;
     String descNoon;
@@ -38,7 +39,7 @@ public class Item {
         descMidnight = itemDescMidnight;
     }
     
-    public Item(int itemReferenceNumber, int itemRoomLocation, String, itemMoment, String itemName, String itemDesc9am, String itemDescNoon, String itemDesc3pm, String itemDesc6pm, String itemDesc9pm, String itemDescMidnight) {
+    public Item(int itemReferenceNumber, int itemRoomLocation, String itemMoment, String itemName, String itemDesc9am, String itemDescNoon, String itemDesc3pm, String itemDesc6pm, String itemDesc9pm, String itemDescMidnight) {
         referenceNumber = itemReferenceNumber;
         roomLocation = itemRoomLocation;
         moment = itemMoment;
