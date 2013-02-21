@@ -6,7 +6,7 @@ package desynchronosis;
 public class Item {
     int referenceNumber;
     int roomLocation;
-    String moment;
+    String[] moments;
     
     String name;
 
@@ -39,10 +39,10 @@ public class Item {
         descMidnight = itemDescMidnight;
     }
     
-    public Item(int itemReferenceNumber, int itemRoomLocation, String itemMoment, String itemName, String itemDesc9am, String itemDescNoon, String itemDesc3pm, String itemDesc6pm, String itemDesc9pm, String itemDescMidnight) {
+    public Item(int itemReferenceNumber, int itemRoomLocation, String[] itemMoments, String itemName, String itemDesc9am, String itemDescNoon, String itemDesc3pm, String itemDesc6pm, String itemDesc9pm, String itemDescMidnight) {
         referenceNumber = itemReferenceNumber;
         roomLocation = itemRoomLocation;
-        moment = itemMoment;
+        moment = itemMoment; // Fix this to work with every moment
         name = itemName;
         desc9am = itemDesc9am;
         descNoon = itemDescNoon;
